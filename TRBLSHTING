@@ -1,0 +1,27 @@
+(TOOK SOME TIME TO FIGURE OUT. KNOW THIS INFO VALUE.)
+
+In order for AQUA to run in Cloud9:
+
+in the root of the project edit config.js the followings:
+
+change port -> web-> $default: to 8080 instead of 8000
+
+and
+
+change port -> baseUrl -> $default: 'https://127.0.0.1:8080' instead of $default: 'https://127.0.0.1:8000'
+
+
+port: {
+        web: {
+            $filter: 'env',
+            test: 9000,
+            production: process.env.PORT,
+            $default: 8080
+        }
+    },
+    baseUrl: {
+        $filter: 'env',
+        $meta: 'values should not end in "/"',
+        production: 'https://getaqua.herokuapp.com',
+        $default: 'https://127.0.0.1:8080'
+    },
